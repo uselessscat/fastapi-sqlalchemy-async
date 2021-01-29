@@ -1,0 +1,24 @@
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/
+migrations/
+migrations_test/
+.mypy_cache/
+
+# Distribution / packaging
+.Python
+build/
+dist/
+.eggs/
+*.egg-info/
+*.dist-info/
+
+# virtual environmnents
+.venv/
