@@ -1,44 +1,52 @@
-[tool.poetry]
-name = 'fastapi-sqlalchemy-async'
-version = '0.0.1'
-description = 'FastAPI-Sqlalchemy integration with async support'
-authors = [ 'Ariel Carvajal <arie.cbpro@gmail.com>' ]
+[build-system]
+requires = ['flit_core >=2,<4']
+build-backend = 'flit_core.buildapi'
+
+[tool.flit.metadata]
+module = 'fastapi_sqlalchemy_async'
+author = 'Ariel Carvajal'
+author-email = 'arie.cbpro@gmail.com'
+description-file = 'README.md'
+home-page = 'https://github.com/patiprecios/fastapi-sqlalchemy-async'
 license = 'MIT'
-packages = [
-    { include = 'fastapi_sqlalchemy_async' },
+requires-python = '>=3.7'
+requires = [
+    'sqlalchemy >=1.4.0b1'
 ]
 classifiers = [
     'Environment :: Web Environment',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: MIT License',
     'Operating System :: OS Independent',
-    'Programming Language :: Python',
     'Programming Language :: Python :: 3',
-    'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-    'Topic :: Software Development :: Libraries :: Python Modules'
+    'Programming Language :: Python',
+    'Topic :: Database',
+    'Topic :: Internet :: WWW/HTTP',
+    'Topic :: Software Development :: Libraries :: Python Modules',
+    'Typing :: Typed',
 ]
 
-[tool.poetry.dependencies]
-python = '^3.7'
+[tool.flit.metadata.requires-extra]
+test = [
+    # lint
+    'flake8 >=3.8.4',
+    'mypy >=0.790',
+    'pylint >=2.6.0',
+    'autopep8 >=1.5.4',
 
-# main deps
-sqlalchemy = { version = '^1.4.0b1', allow-prereleases = true }
+    # tests
+    'pytest >=6.2.1',
+    'docker >=4.4.4',
+]
+postgresql = ['asyncpg']
+mysql = ['aiomysql']
+sqlite = ['aiosqlite']
+'postgresql+aiopg' = ['aiopg']
+    
 
-[tool.poetry.dev-dependencies]
-# lint
-flake8 = '^3.8.4'
-mypy = '^0.790'
-pylint = '^2.6.0'
-autopep8 = '^1.5.4'
-
-# tests
-pytest = '^6.2.1'
-
-# packaging
-setuptools = '^51.1.0'
-wheel = '^0.36.2'
-twine = '^3.3.0'
-
-[build-system]
-requires = [ 'poetry-core>=1.0.0' ]
-build-backend = 'poetry.core.masonry.api'
+[tool.pytest.ini_options]
+minversion = '6.0'
+addopts = '-vs'
+testpaths = [
+    'tests'
+]
