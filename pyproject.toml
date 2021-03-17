@@ -41,8 +41,7 @@ test = [
 postgresql = ['asyncpg']
 mysql = ['aiomysql']
 sqlite = ['aiosqlite']
-'postgresql+aiopg' = ['aiopg']
-    
+postgresql-aiopg = ['aiopg']
 
 [tool.pytest.ini_options]
 minversion = '6.0'
